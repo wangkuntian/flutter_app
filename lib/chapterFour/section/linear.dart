@@ -86,11 +86,8 @@ class RowPageState extends State<RowPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _mainAxisAlignment = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _mainAxisAlignment = value)),
                     ],
                   ),
                 ),
@@ -108,11 +105,8 @@ class RowPageState extends State<RowPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _mainAxisSize = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _mainAxisSize = value)),
                     ],
                   ),
                 ),
@@ -130,11 +124,8 @@ class RowPageState extends State<RowPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _crossAxisAlignment = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _crossAxisAlignment = value)),
                     ],
                   ),
                 ),
@@ -152,11 +143,8 @@ class RowPageState extends State<RowPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _verticalDirection = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _verticalDirection = value)),
                     ],
                   ),
                 ),
@@ -174,11 +162,8 @@ class RowPageState extends State<RowPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _textBaseline = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _textBaseline = value)),
                     ],
                   ),
                 ),
@@ -196,11 +181,8 @@ class RowPageState extends State<RowPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _textDirection = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _textDirection = value)),
                     ],
                   ),
                 )
@@ -298,11 +280,8 @@ class ColumnPageState extends State<ColumnPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _mainAxisAlignment = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _mainAxisAlignment = value)),
                     ],
                   ),
                 ),
@@ -320,11 +299,8 @@ class ColumnPageState extends State<ColumnPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _mainAxisSize = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _mainAxisSize = value)),
                     ],
                   ),
                 ),
@@ -342,11 +318,8 @@ class ColumnPageState extends State<ColumnPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _crossAxisAlignment = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _crossAxisAlignment = value)),
                     ],
                   ),
                 ),
@@ -364,11 +337,8 @@ class ColumnPageState extends State<ColumnPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _verticalDirection = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _verticalDirection = value)),
                     ],
                   ),
                 ),
@@ -386,11 +356,8 @@ class ColumnPageState extends State<ColumnPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _textBaseline = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _textBaseline = value)),
                     ],
                   ),
                 ),
@@ -408,11 +375,8 @@ class ColumnPageState extends State<ColumnPage> {
                                     value: item,
                                   ))
                               .toList(),
-                          onChanged: (value) {
-                            setState(() {
-                              _textDirection = value;
-                            });
-                          }),
+                          onChanged: (value) =>
+                              setState(() => _textDirection = value)),
                     ],
                   ),
                 )

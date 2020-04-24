@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutterapp/common/main.dart';
@@ -81,7 +79,8 @@ class FlexPageState extends State<FlexPage> {
               direction: Axis.horizontal,
               children: <Widget>[
                 Expanded(child: getFlex(colors_1, Axis.horizontal)),
-                Expanded(child: getFlex(colors_2.reversed.toList(), Axis.horizontal))
+                Expanded(
+                    child: getFlex(colors_2.reversed.toList(), Axis.horizontal))
               ],
             ),
           ),
@@ -89,7 +88,9 @@ class FlexPageState extends State<FlexPage> {
             child: Flex(
               direction: Axis.horizontal,
               children: <Widget>[
-                Expanded(child: getFlex(colors_3.reversed.toList(), Axis.horizontal)),
+                Expanded(
+                    child:
+                        getFlex(colors_3.reversed.toList(), Axis.horizontal)),
                 Expanded(child: getFlex(colors_4, Axis.horizontal))
               ],
             ),
