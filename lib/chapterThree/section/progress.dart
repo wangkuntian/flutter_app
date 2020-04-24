@@ -10,10 +10,8 @@ class ProgressPage extends StatefulWidget {
 
 class ProgressPageState extends State<ProgressPage>
     with SingleTickerProviderStateMixin {
-  double value = 0;
   AnimationController controller;
   Animation curve;
-  bool isStarted = false;
 
   @override
   void initState() {

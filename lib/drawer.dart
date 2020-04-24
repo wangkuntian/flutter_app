@@ -40,18 +40,14 @@ class MyDrawerState extends State<MyDrawer> {
   Future getImageByCamera() async {
     if (await Permission.camera.request().isGranted) {
       var image = await ImagePicker.pickImage(source: ImageSource.camera);
-      setState(() {
-        headImage = FileImage(image);
-      });
+      setState(() => headImage = FileImage(image));
     }
   }
 
   Future getImageByGallery() async {
     if (await Permission.photos.request().isGranted) {
       var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-      setState(() {
-        headImage = FileImage(image);
-      });
+      setState(() => headImage = FileImage(image));
     }
   }
 

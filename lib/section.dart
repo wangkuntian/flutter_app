@@ -108,6 +108,25 @@ class SectionListPage extends StatelessWidget {
             'sections': sections,
             'routes': ['/wrapPage', '/flowPage']
           });
+        } else if (section.page == '4.5') {
+          Navigator.pushNamed(context, '/stackPage',
+              arguments: {'section': section});
+        } else if (section.page == '4.6') {
+          Navigator.pushNamed(context, '/alignPage',
+              arguments: {'section': section});
+        } else if (section.page == '5.4') {
+          final List<String> sectionNames = [
+            'Transform',
+            'Matrix4',
+          ];
+          final List<Section> sections = sectionNames
+              .map((item) => Section.init(item, section.url, section.page))
+              .toList();
+          Navigator.pushNamed(context, '/commonSectionListPage', arguments: {
+            'title': title,
+            'sections': sections,
+            'routes': ['/transformListPage', '/flowPage']
+          });
         }
       },
     );

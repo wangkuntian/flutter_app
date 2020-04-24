@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/chapterFive/index.dart';
 import 'package:flutterapp/chapterFour/index.dart';
 import 'package:flutterapp/chapterThree/index.dart';
 import 'package:flutterapp/chapterTwo/index.dart';
@@ -29,6 +30,13 @@ final Map<String, WidgetBuilder> routes = {
   '/flexPage': (context) => FlexPage(),
   '/wrapPage': (context) => WrapPage(),
   '/flowPage': (context) => FlowPage(),
+  '/stackPage': (context) => StackPage(),
+  '/alignPage': (context) => AlignPage(),
+  '/transformListPage': (context) => TransformListPage(),
+  '/transformPage': (context) => TransformPage(),
+  '/translatePage': (context) => TranslatePage(),
+  '/rotatePage': (context) => RotatePage(),
+  '/scalePage': (context) => ScalePage(),
   '/settingListPage': (context) => SettingListPage(),
   '/themePage': (context) => ThemePage(),
   '/shopPage': (context) => ShopPage(),

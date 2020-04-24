@@ -475,3 +475,24 @@ class HYAlertDialog extends StatelessWidget {
     );
   }
 }
+
+class HYDropdownButton<T> extends StatelessWidget {
+  final T value;
+  final List<T> items;
+  final ValueChanged onChanged;
+
+  const HYDropdownButton({Key key, this.value, this.items, this.onChanged})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton(
+      value: value,
+      onChanged: onChanged,
+      items: items
+          .map((item) => DropdownMenuItem(
+              value: item, child: HYText(title: item.toString())))
+          .toList(),
+    );
+  }
+}
