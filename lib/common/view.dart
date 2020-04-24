@@ -6,6 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import 'main.dart';
+
 class HYAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool centerTitle;
@@ -427,6 +429,33 @@ class HYChapterListView extends StatelessWidget {
   }
 }
 
+class HYCommonListView extends StatelessWidget {
+  final List<String> items;
+  final List<String> routes;
+  final Section section;
+  final String title;
+
+  const HYCommonListView(
+      {Key key, this.items, this.routes, this.section, this.title})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: HYAppBar(title: title),
+      body: ListView.separated(
+          itemBuilder: (context, index) => ListTile(
+                title: HYText(title: items[index]),
+                trailing: HYIcon.arrowRight,
+                onTap: () => Navigator.pushNamed(context, routes[index],
+                    arguments: {'section': section}),
+              ),
+          separatorBuilder: (context, index) => HYDivider(),
+          itemCount: items.length),
+    );
+  }
+}
+
 typedef WidgetBuilderCallBack = Widget Function(AsyncSnapshot snapshot);
 
 class HYFutureBuilder extends StatelessWidget {
@@ -493,6 +522,79 @@ class HYDropdownButton<T> extends StatelessWidget {
           .map((item) => DropdownMenuItem(
               value: item, child: HYText(title: item.toString())))
           .toList(),
+    );
+  }
+}
+
+typedef IndexValueChanged = void Function(int index, double value);
+
+class TransformView extends StatelessWidget {
+  final Widget child;
+  final String title;
+  final List<String> items;
+  final List<double> values;
+  final double limit;
+  final IndexValueChanged onChanged;
+
+  const TransformView(
+      {Key key,
+      this.title,
+      this.items,
+      this.values,
+      this.limit,
+      this.onChanged,
+      this.child})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: Center(
+            child: Container(
+                height: 180 * vWidth,
+                width: 180 * vWidth,
+                color: Colors.blue[100],
+                child: child),
+          ),
+        ),
+        Expanded(
+          child: ListView(
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.only(left: 20 * vWidth),
+                child: HYText.bigAndBold(title: title),
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                    top: 30 * vHeight, left: 20 * vWidth, right: 20 * vWidth),
+                child: Wrap(
+                    spacing: 20 * vWidth,
+                    children: items
+                        .asMap()
+                        .keys
+                        .map((index) => Wrap(
+                              children: <Widget>[
+                                HYText(
+                                    title: items[index] +
+                                        ': ' +
+                                        values[index].toStringAsFixed(2)),
+                                Center(
+                                  child: Slider(
+                                      value: values[index],
+                                      max: limit,
+                                      onChanged: (value) =>
+                                          onChanged(index, value)),
+                                )
+                              ],
+                            ))
+                        .toList()),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

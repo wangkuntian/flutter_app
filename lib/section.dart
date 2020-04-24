@@ -125,7 +125,7 @@ class SectionListPage extends StatelessWidget {
           Navigator.pushNamed(context, '/commonSectionListPage', arguments: {
             'title': title,
             'sections': sections,
-            'routes': ['/transformListPage', '/flowPage']
+            'routes': ['/transformListPage', '/matrixListPage']
           });
         }
       },
