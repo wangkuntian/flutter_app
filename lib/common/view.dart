@@ -541,24 +541,12 @@ class HYDropdownButton<T> extends StatelessWidget {
   }
 }
 
-typedef IndexValueChanged = void Function(int index, double value);
-
-class TransformView extends StatelessWidget {
-  final Widget child;
+class HYStageView extends StatelessWidget {
+  final Widget stage;
   final String title;
-  final List<String> items;
-  final List<double> values;
-  final double limit;
-  final IndexValueChanged onChanged;
+  final List<Widget> children;
 
-  const TransformView(
-      {Key key,
-      this.title,
-      this.items,
-      this.values,
-      this.limit,
-      this.onChanged,
-      this.child})
+  const HYStageView({Key key, this.stage, this.title, this.children})
       : super(key: key);
 
   @override
@@ -566,13 +554,7 @@ class TransformView extends StatelessWidget {
     return Column(
       children: <Widget>[
         Expanded(
-          child: Center(
-            child: Container(
-                height: 180 * vWidth,
-                width: 180 * vWidth,
-                color: Colors.blue[100],
-                child: child),
-          ),
+          child: stage,
         ),
         Expanded(
           child: ListView(
@@ -584,32 +566,65 @@ class TransformView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(
                     top: 30 * vHeight, left: 20 * vWidth, right: 20 * vWidth),
-                child: Wrap(
-                    spacing: 20 * vWidth,
-                    children: items
-                        .asMap()
-                        .keys
-                        .map((index) => Wrap(
-                              children: <Widget>[
-                                HYText(
-                                    title: items[index] +
-                                        ': ' +
-                                        values[index].toStringAsFixed(2)),
-                                Center(
-                                  child: Slider(
-                                      value: values[index],
-                                      max: limit,
-                                      onChanged: (value) =>
-                                          onChanged(index, value)),
-                                )
-                              ],
-                            ))
-                        .toList()),
+                child: Wrap(spacing: 20 * vWidth, children: children),
               ),
             ],
           ),
         ),
       ],
+    );
+  }
+}
+
+typedef IndexValueChanged = void Function(int index, double value);
+
+class HYTransformView extends StatelessWidget {
+  final Widget child;
+  final String title;
+  final List<String> items;
+  final List<double> values;
+  final double limit;
+  final IndexValueChanged onChanged;
+
+  const HYTransformView(
+      {Key key,
+      this.title,
+      this.items,
+      this.values,
+      this.limit,
+      this.onChanged,
+      this.child})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return HYStageView(
+      stage: Center(
+        child: Container(
+            height: 180 * vWidth,
+            width: 180 * vWidth,
+            color: Colors.blue[100],
+            child: child),
+      ),
+      title: title,
+      children: items
+          .asMap()
+          .keys
+          .map((index) => Wrap(
+                children: <Widget>[
+                  HYText(
+                      title: items[index] +
+                          ': ' +
+                          values[index].toStringAsFixed(2)),
+                  Center(
+                    child: Slider(
+                        value: values[index],
+                        max: limit,
+                        onChanged: (value) => onChanged(index, value)),
+                  )
+                ],
+              ))
+          .toList(),
     );
   }
 }

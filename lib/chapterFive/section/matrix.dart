@@ -45,7 +45,7 @@ class RotationPageState extends State<RotationPage> {
           HYIconButton.web(onPressed: () => pushToWebView(context, section.url))
         ],
       ),
-      body: TransformView(
+      body: HYTransformView(
         title: 'Rotation',
         items: items,
         values: values,
@@ -95,7 +95,7 @@ class SkewPageState extends State<SkewPage> {
           HYIconButton.web(onPressed: () => pushToWebView(context, section.url))
         ],
       ),
-      body: TransformView(
+      body: HYTransformView(
         title: 'Skew',
         items: items,
         values: values,

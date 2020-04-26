@@ -44,7 +44,7 @@ class TranslatePageState extends State<TranslatePage> {
           HYIconButton.web(onPressed: () => pushToWebView(context, section.url))
         ],
       ),
-      body: TransformView(
+      body: HYTransformView(
         title: 'Translate',
         items: items,
         values: values,
@@ -84,7 +84,7 @@ class RotatePageState extends State<RotatePage> {
           HYIconButton.web(onPressed: () => pushToWebView(context, section.url))
         ],
       ),
-      body: TransformView(
+      body: HYTransformView(
         title: 'Rotate',
         items: items,
         values: values,
@@ -125,7 +125,7 @@ class ScalePageState extends State<ScalePage> {
           HYIconButton.web(onPressed: () => pushToWebView(context, section.url))
         ],
       ),
-      body: TransformView(
+      body: HYTransformView(
         title: 'Scale',
         items: items,
         values: values,
