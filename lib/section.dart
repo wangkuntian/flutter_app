@@ -127,6 +127,20 @@ class SectionListPage extends StatelessWidget {
             'sections': sections,
             'routes': ['/transformListPage', '/matrixListPage']
           });
+        } else if (section.page == '5.6') {
+          final List<String> sectionNames = [
+            'Scaffold',
+            'TabBar',
+            'BottomAppBar'
+          ];
+          final List<Section> sections = sectionNames
+              .map((item) => Section.init(item, section.url, section.page))
+              .toList();
+          Navigator.pushNamed(context, '/commonSectionListPage', arguments: {
+            'title': title,
+            'sections': sections,
+            'routes': ['', '/tabBarPage', '/bottomAppBarPage']
+          });
         }
       },
     );

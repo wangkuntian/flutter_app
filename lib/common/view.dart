@@ -190,6 +190,14 @@ class HYIcon extends StatelessWidget {
 
   static const HYIcon warning = HYIcon(icon: Icons.warning);
 
+  static const HYIcon news = HYIcon(icon: FontAwesomeIcons.newspaper);
+
+  static const HYIcon image = HYIcon(icon: FontAwesomeIcons.image);
+
+  static const HYIcon video = HYIcon(icon: FontAwesomeIcons.video);
+
+  static const HYIcon home = HYIcon(icon: FontAwesomeIcons.home);
+
   @override
   Widget build(BuildContext context) {
     return FaIcon(icon, color: color);
@@ -239,6 +247,13 @@ class HYIconButton extends StatelessWidget {
       : super(key: key);
 
   const HYIconButton.eye({Key key, this.icon: HYIcon.eye, this.onPressed})
+      : super(key: key);
+
+  const HYIconButton.setting(
+      {Key key, this.icon: HYIcon.setting, this.onPressed})
+      : super(key: key);
+
+  const HYIconButton.home({Key key, this.icon: HYIcon.home, this.onPressed})
       : super(key: key);
 
   @override

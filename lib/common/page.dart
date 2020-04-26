@@ -17,8 +17,14 @@ class CommonSectionListPage extends StatelessWidget {
           itemBuilder: (context, index) => ListTile(
                 title: HYText(title: sections[index].section),
                 trailing: HYIcon.arrowRight,
-                onTap: () => Navigator.pushNamed(context, routes[index],
-                    arguments: {'section': sections[index]}),
+                onTap: () {
+                  if (routes[index] == '') {
+                    pushToWebView(context, sections[index].url);
+                  } else {
+                    Navigator.pushNamed(context, routes[index],
+                        arguments: {'section': sections[index]});
+                  }
+                },
               ),
           separatorBuilder: (context, index) => HYDivider(),
           itemCount: sections.length),
