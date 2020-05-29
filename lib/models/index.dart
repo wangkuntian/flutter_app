@@ -1,2 +1,3 @@
-export 'chapter.dart' ; 
-export 'section.dart' ; 
+export 'chapter.dart';
+export 'section.dart';
+export 'product.dart';

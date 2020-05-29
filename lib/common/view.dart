@@ -35,6 +35,35 @@ class HYAppBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
+class HYScaffold extends StatelessWidget {
+  final String title;
+  final Section section;
+  final Widget body;
+  final Color backgroundColor;
+
+  const HYScaffold(
+      {Key key, this.title, this.section, this.body, this.backgroundColor})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> actions = [];
+    if (section != null) {
+      actions.add(HYIconButton.web(
+        onPressed: () => pushToWebView(context, section.url),
+      ));
+    }
+    return Scaffold(
+      appBar: HYAppBar(
+        title: title,
+        actions: actions,
+      ),
+      body: body,
+      backgroundColor: backgroundColor,
+    );
+  }
+}
+
 class HYText extends StatelessWidget {
   final String title;
   final Color textColor;
@@ -44,6 +73,7 @@ class HYText extends StatelessWidget {
   final FontWeight fontWeight;
   final FontStyle fontStyle;
   final String fontFamily;
+  final int maxLines;
 
   const HYText(
       {Key key,
@@ -54,7 +84,8 @@ class HYText extends StatelessWidget {
       this.fontWeight,
       this.fontStyle,
       this.fontFamily,
-      this.textDirection})
+      this.textDirection,
+      this.maxLines})
       : super(key: key);
 
   const HYText.section(
@@ -66,7 +97,8 @@ class HYText extends StatelessWidget {
       this.fontStyle,
       this.fontFamily,
       this.fontWeight,
-      this.textDirection})
+      this.textDirection,
+      this.maxLines})
       : super(key: key);
 
   const HYText.chapter(
@@ -78,7 +110,8 @@ class HYText extends StatelessWidget {
       this.fontWeight,
       this.fontStyle,
       this.fontFamily,
-      this.textDirection})
+      this.textDirection,
+      this.maxLines})
       : super(key: key);
 
   const HYText.center(
@@ -90,7 +123,8 @@ class HYText extends StatelessWidget {
       this.fontWeight,
       this.fontStyle,
       this.fontFamily,
-      this.textDirection})
+      this.textDirection,
+      this.maxLines})
       : super(key: key);
 
   const HYText.italic(
@@ -102,7 +136,8 @@ class HYText extends StatelessWidget {
       this.fontWeight,
       this.fontStyle: FontStyle.italic,
       this.fontFamily,
-      this.textDirection})
+      this.textDirection,
+      this.maxLines})
       : super(key: key);
 
   const HYText.big(
@@ -114,7 +149,8 @@ class HYText extends StatelessWidget {
       this.fontWeight: FontWeight.w400,
       this.fontStyle,
       this.fontFamily,
-      this.textDirection})
+      this.textDirection,
+      this.maxLines})
       : super(key: key);
 
   const HYText.bigAndBold(
@@ -126,7 +162,8 @@ class HYText extends StatelessWidget {
       this.fontWeight: FontWeight.w600,
       this.fontStyle,
       this.fontFamily,
-      this.textDirection})
+      this.textDirection,
+      this.maxLines})
       : super(key: key);
 
   @override
@@ -135,6 +172,8 @@ class HYText extends StatelessWidget {
       title,
       textAlign: textAlign,
       textDirection: textDirection,
+      maxLines: maxLines,
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(
         color: textColor,
         fontSize: fontSize,
@@ -154,6 +193,9 @@ class HYIcon extends StatelessWidget {
 
   static const HYIcon arrowRight =
       HYIcon(icon: Icons.keyboard_arrow_right, color: Colors.grey);
+
+  static const HYIcon arrowRight2 =
+      HYIcon(icon: FontAwesomeIcons.angleRight, color: Colors.grey);
 
   static const HYIcon code = HYIcon(icon: Icons.code, color: Colors.white);
 
@@ -197,6 +239,10 @@ class HYIcon extends StatelessWidget {
   static const HYIcon video = HYIcon(icon: FontAwesomeIcons.video);
 
   static const HYIcon home = HYIcon(icon: FontAwesomeIcons.home);
+
+  static const HYIcon heart = HYIcon(icon: FontAwesomeIcons.heart);
+
+  static const HYIcon people = HYIcon(icon: FontAwesomeIcons.peopleArrows);
 
   @override
   Widget build(BuildContext context) {
@@ -566,7 +612,10 @@ class HYStageView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(
                     top: 30 * vHeight, left: 20 * vWidth, right: 20 * vWidth),
-                child: Wrap(spacing: 20 * vWidth, children: children),
+                child: Wrap(
+                    direction: Axis.vertical,
+                    spacing: 15 * vHeight,
+                    children: children),
               ),
             ],
           ),

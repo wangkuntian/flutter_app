@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/chapterFive/index.dart';
 import 'package:flutterapp/chapterFour/index.dart';
+import 'package:flutterapp/chapterNine/index.dart';
 import 'package:flutterapp/chapterThree/index.dart';
 import 'package:flutterapp/chapterTwo/index.dart';
 import 'package:flutterapp/common/main.dart';
@@ -41,6 +42,13 @@ final Map<String, WidgetBuilder> routes = {
   '/skewPage': (context) => SkewPage(),
   '/tabBarPage': (context) => TabBarPage(),
   '/bottomAppBarPage': (context) => BottomAppBarPage(),
+  '/animationPage': (context) => BasicAnimationPage(),
+  '/curveAnimationPage': (context) => CurveAnimationPage(),
+  '/animatedWidgetPage': (context) => AnimatedWidgetPage(),
+  '/animatedBuilderPage': (context) => AnimatedBuilderPage(),
+  '/routeAnimatedPage': (context) => RouteAnimatedPage(),
+  '/heroAnimationPage': (context) => HeroAnimationPage(),
+  '/heroAnimationDetailPage': (context) => HeroAnimationDetailPage(),
   '/pageViewPage': (context) => PageViewPage(),
   '/settingListPage': (context) => SettingListPage(),
   '/themePage': (context) => ThemePage(),

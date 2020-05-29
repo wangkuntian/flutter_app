@@ -133,6 +133,28 @@ class SectionListPage extends StatelessWidget {
               'routes': ['', '/tabBarPage', '/bottomAppBarPage']
             },
           );
+        } else if (section.page == '9.2') {
+          commonRoute(
+            context,
+            section,
+            ['Basic', 'Curve', 'AnimatedWidget', 'AnimatedBuilder'],
+            '/commonSectionListPage',
+            {
+              'title': title,
+              'routes': [
+                '/animationPage',
+                '/curveAnimationPage',
+                '/animatedWidgetPage',
+                '/animatedBuilderPage'
+              ]
+            },
+          );
+        } else if (section.page == '9.3') {
+          Navigator.pushNamed(context, '/routeAnimatedPage',
+              arguments: {'section': section});
+        } else if (section.page == '9.4') {
+          Navigator.pushNamed(context, '/heroAnimationPage',
+              arguments: {'section': section});
         }
       },
     );
