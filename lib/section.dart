@@ -23,138 +23,121 @@ class SectionListPage extends StatelessWidget {
       onTap: (int index) {
         final Section section = sections[index];
         final String title = section.section.split('：')[1];
-        final List<String> pages = [
-          '1.1',
-          '1.2',
-          '1.3',
-          '1.4',
-          '2.3',
-          '2.4',
-          '2.5',
-          '2.6',
-          '3.1',
-          '3.2',
-          '4.1',
-          '9.1',
-        ];
-
-        if (pages.indexOf(section.page) >= 0) {
-          pushToWebView(context, section.url);
-        } else if (section.page == '2.1') {
-          Navigator.pushNamed(
-            context,
-            '/fristAppPage',
-            arguments: {'section': section},
-          );
-        } else if (section.page == '2.2') {
-          commonRoute(
-            context,
-            section,
-            ['路由', '路由传值'],
-            '/routeControlListPage',
-            {'title': title},
-          );
-        } else if (section.page == '3.3') {
-          Navigator.pushNamed(context, '/textPage',
-              arguments: {'section': section});
-        } else if (section.page == '3.4') {
-          Navigator.pushNamed(context, '/buttonPage',
-              arguments: {'section': section});
-        } else if (section.page == '3.5') {
-          Navigator.pushNamed(context, '/imagePage',
-              arguments: {'section': section});
-        } else if (section.page == '3.6') {
-          Navigator.pushNamed(context, '/checkPage',
-              arguments: {'section': section});
-        } else if (section.page == '3.7') {
-          commonRoute(
-            context,
-            section,
-            ['TextField', 'FormField'],
-            '/commonSectionListPage',
-            {
-              'title': title,
-              'routes': ['/textfieldPage', '/textformfieldPage']
-            },
-          );
-        } else if (section.page == '3.8') {
-          Navigator.pushNamed(context, '/progressPage',
-              arguments: {'section': section});
-        } else if (section.page == '4.2') {
-          commonRoute(
-            context,
-            section,
-            ['Row', 'Column'],
-            '/commonSectionListPage',
-            {
-              'title': title,
-              'routes': ['/rowPage', '/columnPage']
-            },
-          );
-        } else if (section.page == '4.3') {
-          Navigator.pushNamed(context, '/flexPage',
-              arguments: {'section': section});
-        } else if (section.page == '4.4') {
-          commonRoute(
-            context,
-            section,
-            ['Wrap', 'Flow'],
-            '/commonSectionListPage',
-            {
-              'title': title,
-              'routes': ['/wrapPage', '/flowPage']
-            },
-          );
-        } else if (section.page == '4.5') {
-          Navigator.pushNamed(context, '/stackPage',
-              arguments: {'section': section});
-        } else if (section.page == '4.6') {
-          Navigator.pushNamed(context, '/alignPage',
-              arguments: {'section': section});
-        } else if (section.page == '5.4') {
-          commonRoute(
-            context,
-            section,
-            ['Transform', 'Matrix4'],
-            '/commonSectionListPage',
-            {
-              'title': title,
-              'routes': ['/transformListPage', '/matrixListPage']
-            },
-          );
-        } else if (section.page == '5.6') {
-          commonRoute(
-            context,
-            section,
-            ['Scaffold', 'TabBar', 'BottomAppBar'],
-            '/commonSectionListPage',
-            {
-              'title': title,
-              'routes': ['', '/tabBarPage', '/bottomAppBarPage']
-            },
-          );
-        } else if (section.page == '9.2') {
-          commonRoute(
-            context,
-            section,
-            ['Basic', 'Curve', 'AnimatedWidget', 'AnimatedBuilder'],
-            '/commonSectionListPage',
-            {
-              'title': title,
-              'routes': [
-                '/animationPage',
-                '/curveAnimationPage',
-                '/animatedWidgetPage',
-                '/animatedBuilderPage'
-              ]
-            },
-          );
-        } else if (section.page == '9.3') {
-          Navigator.pushNamed(context, '/routeAnimatedPage',
-              arguments: {'section': section});
-        } else if (section.page == '9.4') {
-          Navigator.pushNamed(context, '/heroAnimationPage',
-              arguments: {'section': section});
+        final Map<String, Object> routePages = {
+          '1.1': '',
+          '1.2': '',
+          '1.3': '',
+          '1.4': '',
+          '2.1': '/firstAppPage',
+          '2.2': {
+            'items': ['路由', '路由传值'],
+            'routes': ['', ''],
+            'title': title
+          },
+          '2.3': '',
+          '2.4': '',
+          '2.5': '',
+          '2.6': '',
+          '3.1': '',
+          '3.2': '',
+          '3.3': '/textPage',
+          '3.4': '/buttonPage',
+          '3.5': '/imagePage',
+          '3.6': '/checkPage',
+          '3.7': {
+            'items': ['TextField', 'FormField'],
+            'routes': ['/textFieldPage', '/textFormFieldPage'],
+            'title': title
+          },
+          '3.8': '/progressPage',
+          '4.1': '',
+          '4.2': {
+            'items': ['Row', 'Column'],
+            'routes': ['/rowPage', '/columnPage'],
+            'title': title
+          },
+          '4.3': '',
+          '4.4': {
+            'items': ['Wrap', 'Flow'],
+            'title': title,
+            'routes': ['/wrapPage', '/flowPage']
+          },
+          '4.5': '/stackPage',
+          '4.6': '/alignPage',
+          '5.1': '',
+          '5.2': '',
+          '5.4': {
+            'items': ['Transform', 'Matrix4'],
+            'title': title,
+            'routes': ['/transformListPage', '/matrixListPage']
+          },
+          '5.6': {
+            'items': ['Scaffold', 'TabBar', 'BottomAppBar'],
+            'title': title,
+            'routes': ['', '/tabBarPage', '/bottomAppBarPage']
+          },
+          '9.2': {
+            'items': ['Basic', 'Curve', 'AnimatedWidget', 'AnimatedBuilder'],
+            'title': title,
+            'routes': [
+              '/animationPage',
+              '/curveAnimationPage',
+              '/animatedWidgetPage',
+              '/animatedBuilderPage'
+            ]
+          },
+          '9.3': '/routeAnimatedPage',
+          '9.4': '/heroAnimationPage',
+          '9.5': '/StaggerAnimationPage',
+          '9.6': '/SwitcherAnimationPage',
+          '9.7': {
+            'items': [
+              '自定义',
+              'AnimatedPadding',
+              'AnimatedPositioned',
+              'AnimatedOpacity',
+              'AnimatedAlign',
+              'AnimatedContainer',
+              'AnimatedDefaultTextStyle'
+            ],
+            'title': title,
+            'routes': [
+              '/AnimationPage',
+              '/AnimatedPaddingPage',
+              '/AnimatedPositionedPage',
+              '/AnimatedOpacityPage',
+              '/AnimatedAlignPage',
+              '/AnimatedContainerPage',
+              '/AnimatedDefaultTextStylePage'
+            ]
+          }
+        };
+        if (routePages.containsKey(section.page)) {
+          if (routePages[section.page].runtimeType == String) {
+            if (routePages[section.page] != '') {
+              Navigator.pushNamed(context, routePages[section.page],
+                  arguments: {'section': section});
+            } else {
+              pushToWebView(context, section.url);
+            }
+          } else {
+            Map item = routePages[section.page];
+            if (section.page == '2.2') {
+              commonRoute(
+                  context,
+                  section,
+                  item['items'],
+                  '/routeControlListPage',
+                  {'title': item['title'], 'routes': item['routes']});
+            } else {
+              commonRoute(
+                  context,
+                  section,
+                  item['items'],
+                  '/commonSectionListPage',
+                  {'title': item['title'], 'routes': item['routes']});
+            }
+          }
         }
       },
     );

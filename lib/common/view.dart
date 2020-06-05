@@ -244,6 +244,16 @@ class HYIcon extends StatelessWidget {
 
   static const HYIcon people = HYIcon(icon: FontAwesomeIcons.peopleArrows);
 
+  static const HYIcon up = HYIcon(icon: Icons.arrow_upward);
+
+  static const HYIcon down = HYIcon(icon: Icons.arrow_downward);
+
+  static const HYIcon left = HYIcon(icon: Icons.arrow_back);
+
+  static const HYIcon right = HYIcon(icon: Icons.arrow_forward);
+
+  static const HYIcon restore = HYIcon(icon: Icons.restore);
+
   @override
   Widget build(BuildContext context) {
     return FaIcon(icon, color: color);
@@ -300,6 +310,21 @@ class HYIconButton extends StatelessWidget {
       : super(key: key);
 
   const HYIconButton.home({Key key, this.icon: HYIcon.home, this.onPressed})
+      : super(key: key);
+
+  const HYIconButton.up({Key key, this.icon: HYIcon.up, this.onPressed})
+      : super(key: key);
+
+  const HYIconButton.down({Key key, this.icon: HYIcon.down, this.onPressed})
+      : super(key: key);
+
+  const HYIconButton.left({Key key, this.icon: HYIcon.left, this.onPressed})
+      : super(key: key);
+
+  const HYIconButton.right({Key key, this.icon: HYIcon.right, this.onPressed})
+      : super(key: key);
+
+  const HYIconButton.restore({Key key, this.icon: HYIcon.restore, this.onPressed})
       : super(key: key);
 
   @override
@@ -591,8 +616,14 @@ class HYStageView extends StatelessWidget {
   final Widget stage;
   final String title;
   final List<Widget> children;
+  final Axis direction;
 
-  const HYStageView({Key key, this.stage, this.title, this.children})
+  const HYStageView(
+      {Key key,
+      this.stage,
+      this.title,
+      this.children,
+      this.direction = Axis.vertical})
       : super(key: key);
 
   @override
@@ -613,7 +644,7 @@ class HYStageView extends StatelessWidget {
                 padding: EdgeInsets.only(
                     top: 30 * vHeight, left: 20 * vWidth, right: 20 * vWidth),
                 child: Wrap(
-                    direction: Axis.vertical,
+                    direction: this.direction,
                     spacing: 15 * vHeight,
                     children: children),
               ),
